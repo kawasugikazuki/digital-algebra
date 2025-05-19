@@ -22,7 +22,7 @@ s3 = (       N[1] + N[2]+ N[3])%2
 print([s1, s2, s3])
 
 # 生成行列
-H = np.array([
+G = np.array([
   [1,0,0,0,1,1,0],
   [0,1,0,0,1,1,1],
   [0,0,1,0,1,0,1],
@@ -30,16 +30,15 @@ H = np.array([
 ],
 dtype='int8')
 # 行列計算でのw
-w2 = np.fmod(A@H, 2)
+w2 = np.fmod(A@G, 2)
 print(w2)
 
 # 検査行列
-G = np.array([
-  [0,1,0,1,0,1,0],
+H = np.array([
+  [1,1,1,0,1,0,0],
+  [0,1,1,1,0,1,0],
   [1,1,0,1,0,0,1],
-  [1,0,0,1,1,0,0],
-  [1,1,1,0,0,0,0],
 ],
 dtype='int8')
-print(np.fmod(w2 @ G.T, 2))
-print(np.fmod(N@G.T, 2))
+print(np.fmod(w2 @ H.T, 2))
+print(np.fmod(N@H.T, 2))
